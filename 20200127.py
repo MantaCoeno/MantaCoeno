@@ -1,58 +1,68 @@
 """Пейзаж из как минимум 5 статических фигур"""
 import graphics as gr
 
-def draw_land(color_land):
-    print("5")
-    return 0
-
-def draw_land(color_land):
+def draw_land(window, color_land, weight, height):
+    print("6")
+    my_land = gr.Rectangle(gr.Point(0, height) , gr.Point(weight, 0))
+    my_land.draw(window)
+    my_land.setFill(color_land)
     print("6")
     return 0
 
-def draw_sky(horizon_height , color_sky):
+def draw_sky(window, horizon_height , weight,  color_sky):
     print("7")
+    my_sky = gr.Rectangle(gr.Point(0, horizon_height) , gr.Point(weight, 0))
+    my_sky.draw(window)
+    my_sky.setFill(color_sky)
     return 0
 
-def draw_moon(moon_center_x, moon_center_y, moon_r, color_moon):
+def draw_moon(window, moon_center_x, moon_center_y, moon_r, color_moon):
     print("8")
+    my_moon = gr.Circle(gr.Point(moon_center_x, moon_center_y), moon_r)
+    my_moon.draw(window)
+    my_moon.setFill(color_moon)
     return 0
 
-def draw_clouds(cloud_centers_x, cloud_centers_y,
+def draw_clouds(window, cloud_centers_x, cloud_centers_y,
               cloud_part_r, color_cloud):
     print("9")
     return 0
 
-def draw_forest(horizon_height, number_of_trees):
+def draw_forest(window, horizon_height, number_of_trees):
     print("10")
     return 0
 
-def draw_Night(
+def draw_Night(window,
+               weight, height,
                color_land, color_sky, color_moon,
                horizon_height, 
-               moon_center_x, moon_center_y,
+               moon_center_x, moon_center_y, moon_r,
                cloud_centers_x, cloud_centers_y, cloud_part_r,
-               numbers_of_trees):
+               number_of_trees):
     print("4")
-    draw_land(color_land)
-    i+=draw_sky(horizon_height , color_sky)
-    i+=draw_moon(moon_center_x, moon_center_y, moon_r, color_moon)
-    i+=draw_clouds(cloud_centers_x, cloud_centers_y,
+    draw_land(window, color_land, weight, height)
+    draw_sky(window, horizon_height , weight, color_sky)
+    draw_moon(window, moon_center_x, moon_center_y, moon_r, color_moon)
+    draw_clouds(window, cloud_centers_x, cloud_centers_y,
                cloud_part_r, color_cloud)
-    i+=draw_forest(horizon_height, number_of_trees)
-    print("Narisovano chastey: ", i)
-    return i
+    draw_forest(window, horizon_height, number_of_trees)
+    print("Narisovano chastey: ")
+    return 
 
 def main():
     print("1")
     draw = True
-    color_land="black"
-    color_sky="black"
-    color_moon="black"
+    weight = 600
+    height = 600
+    color_land="grey"
+    color_sky="blue"
+    color_moon="white"
     
-    horizon_height=0
+    horizon_height=240
 
-    moon_center_x=0
-    moon_center_y=0
+    moon_center_x=50
+    moon_center_y=50
+    moon_r = 20
     
     cloud_centers_x = [0]
     cloud_centers_y = [0]
@@ -70,13 +80,14 @@ def main():
     
     if draw == True:
         print("3")
-        window = gr.GraphWin("Night", 500, 500)
-        draw_Night(
+        window = gr.GraphWin("Night", weight, height)
+        draw_Night(window,
+               weight, height,
                color_land, color_sky, color_moon,
                horizon_height, 
-               moon_center_x, moon_center_y,
+               moon_center_x, moon_center_y, moon_r,
                cloud_centers_x, cloud_centers_y, cloud_part_r,
-               numbers_of_trees)
+               number_of_trees)
     
     
     window.getMouse()

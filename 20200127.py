@@ -31,6 +31,7 @@ def draw_clouds(window, cloud_centers_x, cloud_centers_y,
 def draw_forest(window, horizon_height, number_of_trees):
     print("10")
     return 0
+#test commit
 
 def draw_Night(window,
                weight, height,
